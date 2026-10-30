@@ -1,0 +1,15 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.5",
+  "backgroundImage": "",
+  "body": [
+    { "type": "TextBlock", "text": "3M · Hoy", "weight": "Bolder", "size": "Medium", "color": "Accent" },
+    { "type": "TextBlock", "text": "${t1}", "wrap": true, "spacing": "Medium" },
+    { "type": "TextBlock", "text": "${t2}", "wrap": true, "spacing": "Small" },
+    { "type": "TextBlock", "text": "${t3}", "wrap": true, "spacing": "Small" }
+  ],
+  "actions": [
+    { "type": "Action.Execute", "title": "Abrir 3M", "verb": "open" }
+  ]
+}

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>3M</title>
+  <meta name="description" content="Tus 3 tareas prioritarias del día.">
+  <meta name="theme-color" content="#120A1F">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="3M">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@200;400;600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <section class="clock" id="clock" role="timer" aria-label="Tiempo restante hasta las 22:00">
+      <div class="digits" aria-hidden="true">
+        <div class="grp"><span class="num" id="cH"><i>0</i><i>0</i></span><small>horas</small></div>
+        <span class="sep">:</span>
+        <div class="grp"><span class="num" id="cM"><i>0</i><i>0</i></span><small>minutos</small></div>
+        <span class="sep">:</span>
+        <div class="grp sec"><span class="num" id="cS"><i>0</i><i>0</i></span><small>segundos</small></div>
+      </div>
+      <p class="cap" id="clockCap">para el cierre de las 22:00</p>
+    </section>
+
+    <header class="top">
+      <div>
+        <p class="date" id="dateLabel"></p>
+        <h1 id="title">Tus 3 de hoy</h1>
+      </div>
+      <button class="icon-btn" id="btnSettings" aria-label="Ajustes">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+      </button>
+    </header>
+
+    <main>
+      <section id="viewToday" class="view active" aria-label="Hoy">
+        <ol id="taskList" class="tasks"></ol>
+        <p id="progress" class="progress" aria-live="polite"></p>
+      </section>
+
+      <section id="viewHistory" class="view" aria-label="Historial">
+        <ul id="historyList" class="history"></ul>
+      </section>
+    </main>
+
+    <nav class="tabs" aria-label="Secciones">
+      <button class="on" data-view="viewToday">Hoy</button>
+      <button data-view="viewHistory">Historial</button>
+    </nav>
+  </div>
+
+  <dialog id="settings">
+    <form method="dialog" class="sheet">
+      <h2>Ajustes</h2>
+
+      <label class="switch">
+        <span>
+          Notificación fija con mis 3 tareas
+          <small>Queda en la barra de notificaciones y se actualiza cuando marcas o cambias una tarea.</small>
+        </span>
+        <input type="checkbox" id="optNotify">
+      </label>
+
+      <label class="field">
+        <span>URL de la Web App de Google Apps Script</span>
+        <input type="url" id="optUrl" placeholder="https://script.google.com/macros/s/…/exec" autocomplete="off" inputmode="url">
+      </label>
+
+      <label class="field">
+        <span>Token secreto</span>
+        <input type="password" id="optToken" placeholder="El mismo que pusiste en Code.gs" autocomplete="off">
+      </label>
+
+      <p class="status" id="syncStatus" aria-live="polite"></p>
+
+      <div class="actions">
+        <button type="button" class="btn ghost" id="btnInstall" hidden>Instalar app</button>
+        <button type="button" class="btn" id="btnSync">Sincronizar ahora</button>
+        <button value="close" class="btn primary">Listo</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

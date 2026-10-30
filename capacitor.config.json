@@ -1,0 +1,15 @@
+{
+  "appId": "com.tresm.app",
+  "appName": "3M",
+  "webDir": "www",
+  "backgroundColor": "#120A1F",
+  "android": {
+    "backgroundColor": "#120A1F"
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_3m",
+      "iconColor": "#8B5CF6"
+    }
+  }
+}
